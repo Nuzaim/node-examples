@@ -1,11 +1,19 @@
 var rectangle = require("./rectangle");
 function solveRectangle(l,b){
-    if(l==0 || b==0) {
-        console.log("The dimensions should be greater than 0");
-    }else{
-        console.log("Area:"+rectangle.area(l,b));
-        console.log("Perimeter:"+rectangle.perimeter(l,b));
-    }
+    console.log("Solving for rectangle with l = " + l + " and b = " + b);
+    rectangle(l,b,
+        (err,rectangleProp) => {
+            if(err){
+                console.log("Error :" + err.message);
+            }else{
+                console.log("The area of the rectangle of dimensions l = " 
+                    + l + " and b = " + b + " is " + rectangleProp.area());
+                console.log("The perimeter of the rectangle of dimensions l = "
+                    + l + " and b = " + b + " is " + rectangleProp.perimeter());
+            }
+        }
+    );
+    console.log("This statement after the call to rectangle()");
 }
 solveRectangle(0,0);
 solveRectangle(1,2);
